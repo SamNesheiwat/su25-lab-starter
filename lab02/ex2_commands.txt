@@ -5,6 +5,6 @@
 # Please add your commands below this line
 break main
 run
-steo
+step
 print i
 continue
