@@ -3,3 +3,9 @@
 # Lines starting with # are comments, feel free to add any to document your commands
 
 # Please add your commands below this line
+break main
+run
+print a
+print b
+print c
+backtrace
