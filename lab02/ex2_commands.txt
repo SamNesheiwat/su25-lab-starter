@@ -12,7 +12,7 @@ step
 step
 print password
 finish
-next
-next
+step
+step
 print length
 quit
