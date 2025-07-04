@@ -12,8 +12,10 @@ step
 step
 print password
 finish
+next
 step
-step
+next
+next
+print meets_pen_req
 print length
-print $return 
 quit
