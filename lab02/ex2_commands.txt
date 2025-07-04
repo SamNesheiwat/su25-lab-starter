@@ -15,4 +15,5 @@ finish
 step
 step
 print length
+print $return 
 quit
