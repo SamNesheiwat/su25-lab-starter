@@ -16,6 +16,6 @@ next
 step
 next
 next
-print meets_pen_req
+print meets_len_req
 print length
 quit
