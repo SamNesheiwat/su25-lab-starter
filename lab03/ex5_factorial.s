@@ -26,7 +26,14 @@ main:
 # a0 contains the number which we want to compute the factorial of
 # The return value should be stored in a0
 factorial:
-    # YOUR CODE HERE
+    li t0, 1       
+    li t1, 1        
+
+loop:
+    bgt t1, a0, done    
+    mul t0, t0, t1      
+    addi t1, t1, 1     
+    j loop
 
     # This is how you return from a function. You'll learn more about this later.
     # This should be the last line in your program.
