@@ -51,8 +51,6 @@ pow:
     addi sp, sp, -8
     sw ra, 0(sp)
     sw s0, 4(sp)
-    # FIXME: Need to save the callee saved register(s)
-    # END PROLOGUE
     li s0, 1
 pow_loop:
     beq a1, zero, pow_end
@@ -61,12 +59,9 @@ pow_loop:
     j pow_loop
 pow_end:
     mv a0, s0
-    # BEGIN EPILOGUE
     lw s0, 4(sp)
     lw ra, 0(sp)
     addi sp, sp, 8
-    # FIXME: Need to restore the callee saved register(s)
-    # END EPILOGUE
     jr ra
 
 # Increments the elements of an array in-place.
@@ -76,14 +71,11 @@ pow_end:
 # This function calls the "helper_fn" function, which takes in an
 # address as argument and increments the 32-bit value stored there.
 inc_arr:
-    # BEGIN PROLOGUE
-    # FIXME: What other registers need to be saved?
     addi sp, sp, -12
     sw ra, 0(sp)
     sw s0, 4(sp)
     sw s1, 8(sp)
 
-    # END PROLOGUE
     mv s0, a0 # Copy start of array to saved register
     mv s1, a1 # Copy length of array to saved register
     li t0, 0 # Initialize counter to 0
@@ -99,20 +91,15 @@ inc_arr_loop:
     addi sp, sp, 4
 
 
-    # Also ask yourself this: why don't we need to preserve t1?
-    #
-    jal ra helper_fn
-    # FIXME: Restore t0
-    # Finished call for helper_fn
-    addi t0, t0, 1 # Increment counter
+
+    addi t0, t0, 1 
     j inc_arr_loop
 inc_arr_end:
-    # BEGIN EPILOGUE
+
     lw ra, 0(sp)
     lw s0, 4(sp)
     lw s1, 8(sp)
     addi sp, sp, 12
-    # END EPILOGUE
     jr ra
 
 # This helper function adds 1 to the value at the memory address in a0.
