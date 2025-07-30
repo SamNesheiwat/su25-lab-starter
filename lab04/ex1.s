@@ -48,8 +48,9 @@ next_test:
 # }
 #
 pow:
-    addi sp, sp, -4
-    sw s0, 0(sp)
+    addi sp, sp, -8
+    sw ra, 0(sp)
+    sw s0, 4(sp)
     # FIXME: Need to save the callee saved register(s)
     # END PROLOGUE
     li s0, 1
@@ -61,8 +62,9 @@ pow_loop:
 pow_end:
     mv a0, s0
     # BEGIN EPILOGUE
-    lw s0, 0(sp)
-    addi sp, sp, 4
+    lw s0, 4(sp)
+    lw ra, 0(sp)
+    addi sp, sp, 8
     # FIXME: Need to restore the callee saved register(s)
     # END EPILOGUE
     jr ra
